@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PatchedPersonType")
 
 
 @attr.s(auto_attribs=True)
@@ -36,8 +38,8 @@ class PatchedPersonType:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "PatchedPersonType":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         url = d.pop("url", UNSET)
 
@@ -47,7 +49,7 @@ class PatchedPersonType:
 
         description = d.pop("description", UNSET)
 
-        patched_person_type = PatchedPersonType(
+        patched_person_type = cls(
             url=url,
             id=id,
             name=name,

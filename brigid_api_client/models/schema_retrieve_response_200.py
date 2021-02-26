@@ -1,6 +1,8 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Type, TypeVar
 
 import attr
+
+T = TypeVar("T", bound="SchemaRetrieveResponse_200")
 
 
 @attr.s(auto_attribs=True)
@@ -17,10 +19,10 @@ class SchemaRetrieveResponse_200:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "SchemaRetrieveResponse_200":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        schema_retrieve_response_200 = SchemaRetrieveResponse_200()
+        schema_retrieve_response_200 = cls()
 
         schema_retrieve_response_200.additional_properties = d
         return schema_retrieve_response_200

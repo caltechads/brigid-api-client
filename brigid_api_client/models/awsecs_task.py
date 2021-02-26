@@ -1,0 +1,87 @@
+import datetime
+from typing import Any, Dict, List, Type, TypeVar
+
+import attr
+from dateutil.parser import isoparse
+
+T = TypeVar("T", bound="AWSECSTask")
+
+
+@attr.s(auto_attribs=True)
+class AWSECSTask:
+    """Dynamically removes fields from serializer.
+    https://stackoverflow.com/questions/27935558/dynamically-exclude-or-include-a-field-in-django-rest-framework-serializer"""
+
+    url: str
+    id: int
+    ecs_cluster: str
+    task_family: str
+    environment: str
+    created: datetime.datetime
+    additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
+
+    def to_dict(self) -> Dict[str, Any]:
+        url = self.url
+        id = self.id
+        ecs_cluster = self.ecs_cluster
+        task_family = self.task_family
+        environment = self.environment
+        created = self.created.isoformat()
+
+        field_dict: Dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "url": url,
+                "id": id,
+                "ecs_cluster": ecs_cluster,
+                "task_family": task_family,
+                "environment": environment,
+                "created": created,
+            }
+        )
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        d = src_dict.copy()
+        url = d.pop("url")
+
+        id = d.pop("id")
+
+        ecs_cluster = d.pop("ecs_cluster")
+
+        task_family = d.pop("task_family")
+
+        environment = d.pop("environment")
+
+        created = isoparse(d.pop("created"))
+
+        awsecs_task = cls(
+            url=url,
+            id=id,
+            ecs_cluster=ecs_cluster,
+            task_family=task_family,
+            environment=environment,
+            created=created,
+        )
+
+        awsecs_task.additional_properties = d
+        return awsecs_task
+
+    @property
+    def additional_keys(self) -> List[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

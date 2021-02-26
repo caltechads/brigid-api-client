@@ -17,21 +17,22 @@ def _get_kwargs(
     url = "{}/api/v1/person-types/".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
+    cookies: Dict[str, Any] = client.get_cookies()
 
-    params: Dict[str, Any] = {}
-    if limit is not UNSET:
-        params["limit"] = limit
-    if name is not UNSET:
-        params["name"] = name
-    if offset is not UNSET:
-        params["offset"] = offset
+    params: Dict[str, Any] = {
+        "limit": limit,
+        "name": name,
+        "offset": offset,
+    }
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": client.get_cookies(),
+        "cookies": cookies,
         "timeout": client.get_timeout(),
         "params": params,
+        "verify": False,
     }
 
 

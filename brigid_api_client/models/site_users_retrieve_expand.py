@@ -2,9 +2,11 @@ from enum import Enum
 
 
 class SiteUsersRetrieveExpand(str, Enum):
-    SITEUSERORGANIZATION = "siteuser.organization"
-    SITEUSERPEOPLE_TYPES = "siteuser.people_types"
-    SITEUSERTEAM = "siteuser.team"
+    USERAWS_ACCOUNTS = "user.aws_accounts"
+    USERAWS_VPCS = "user.aws_vpcs"
+    USEROWNED_APPLICATIONS = "user.owned_applications"
+    USERPERSON_TYPES = "user.person_types"
+    USERTEAM = "user.team"
 
     def __str__(self) -> str:
         return str(self.value)

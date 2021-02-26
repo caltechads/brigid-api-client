@@ -17,21 +17,24 @@ def _get_kwargs(
     url = "{}/api/v1/site-users/{id}/".format(client.base_url, id=id)
 
     headers: Dict[str, Any] = client.get_headers()
+    cookies: Dict[str, Any] = client.get_cookies()
 
     json_expand: Union[Unset, SiteUsersRetrieveExpand] = UNSET
     if not isinstance(expand, Unset):
         json_expand = expand
 
-    params: Dict[str, Any] = {}
-    if expand is not UNSET:
-        params["expand"] = json_expand
+    params: Dict[str, Any] = {
+        "expand": json_expand,
+    }
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": client.get_cookies(),
+        "cookies": cookies,
         "timeout": client.get_timeout(),
         "params": params,
+        "verify": False,
     }
 
 

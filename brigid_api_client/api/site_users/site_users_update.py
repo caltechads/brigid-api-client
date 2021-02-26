@@ -18,16 +18,18 @@ def _get_kwargs(
     url = "{}/api/v1/site-users/{id}/".format(client.base_url, id=id)
 
     headers: Dict[str, Any] = client.get_headers()
+    cookies: Dict[str, Any] = client.get_cookies()
 
     json_json_body = json_body.to_dict()
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": client.get_cookies(),
+        "cookies": cookies,
         "timeout": client.get_timeout(),
         "data": asdict(form_data),
         "json": json_json_body,
+        "verify": False,
     }
 
 

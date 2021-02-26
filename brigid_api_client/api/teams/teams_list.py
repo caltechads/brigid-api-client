@@ -25,39 +25,33 @@ def _get_kwargs(
     url = "{}/api/v1/teams/".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
+    cookies: Dict[str, Any] = client.get_cookies()
 
     json_expand: Union[Unset, TeamsListExpand] = UNSET
     if not isinstance(expand, Unset):
         json_expand = expand
 
-    params: Dict[str, Any] = {}
-    if abbr is not UNSET:
-        params["abbr"] = abbr
-    if directory_name is not UNSET:
-        params["directory_name"] = directory_name
-    if expand is not UNSET:
-        params["expand"] = json_expand
-    if friendly_name is not UNSET:
-        params["friendly_name"] = friendly_name
-    if limit is not UNSET:
-        params["limit"] = limit
-    if offset is not UNSET:
-        params["offset"] = offset
-    if organization_abbr is not UNSET:
-        params["organization_abbr"] = organization_abbr
-    if organization_directory_name is not UNSET:
-        params["organization_directory_name"] = organization_directory_name
-    if organization_friendly_name is not UNSET:
-        params["organization_friendly_name"] = organization_friendly_name
-    if organization_id is not UNSET:
-        params["organization_id"] = organization_id
+    params: Dict[str, Any] = {
+        "abbr": abbr,
+        "directory_name": directory_name,
+        "expand": json_expand,
+        "friendly_name": friendly_name,
+        "limit": limit,
+        "offset": offset,
+        "organization_abbr": organization_abbr,
+        "organization_directory_name": organization_directory_name,
+        "organization_friendly_name": organization_friendly_name,
+        "organization_id": organization_id,
+    }
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": client.get_cookies(),
+        "cookies": cookies,
         "timeout": client.get_timeout(),
         "params": params,
+        "verify": False,
     }
 
 

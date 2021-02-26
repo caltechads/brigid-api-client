@@ -1,6 +1,8 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Type, TypeVar
 
 import attr
+
+T = TypeVar("T", bound="PersonType")
 
 
 @attr.s(auto_attribs=True)
@@ -33,8 +35,8 @@ class PersonType:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "PersonType":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         url = d.pop("url")
 
@@ -44,7 +46,7 @@ class PersonType:
 
         description = d.pop("description")
 
-        person_type = PersonType(
+        person_type = cls(
             url=url,
             id=id,
             name=name,

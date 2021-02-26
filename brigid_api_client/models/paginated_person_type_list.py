@@ -1,9 +1,11 @@
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 import attr
 
 from ..models.person_type import PersonType
 from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PaginatedPersonTypeList")
 
 
 @attr.s(auto_attribs=True)
@@ -42,8 +44,8 @@ class PaginatedPersonTypeList:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "PaginatedPersonTypeList":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         count = d.pop("count", UNSET)
 
@@ -58,7 +60,7 @@ class PaginatedPersonTypeList:
 
             results.append(results_item)
 
-        paginated_person_type_list = PaginatedPersonTypeList(
+        paginated_person_type_list = cls(
             count=count,
             next=next,
             previous=previous,

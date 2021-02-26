@@ -23,35 +23,31 @@ def _get_kwargs(
     url = "{}/api/v1/site-users/".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
+    cookies: Dict[str, Any] = client.get_cookies()
 
     json_expand: Union[Unset, SiteUsersListExpand] = UNSET
     if not isinstance(expand, Unset):
         json_expand = expand
 
-    params: Dict[str, Any] = {}
-    if employee_number is not UNSET:
-        params["employee_number"] = employee_number
-    if expand is not UNSET:
-        params["expand"] = json_expand
-    if fullname is not UNSET:
-        params["fullname"] = fullname
-    if limit is not UNSET:
-        params["limit"] = limit
-    if offset is not UNSET:
-        params["offset"] = offset
-    if person_type is not UNSET:
-        params["person_type"] = person_type
-    if team_name is not UNSET:
-        params["team_name"] = team_name
-    if username is not UNSET:
-        params["username"] = username
+    params: Dict[str, Any] = {
+        "employee_number": employee_number,
+        "expand": json_expand,
+        "fullname": fullname,
+        "limit": limit,
+        "offset": offset,
+        "person_type": person_type,
+        "team_name": team_name,
+        "username": username,
+    }
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": client.get_cookies(),
+        "cookies": cookies,
         "timeout": client.get_timeout(),
         "params": params,
+        "verify": False,
     }
 
 

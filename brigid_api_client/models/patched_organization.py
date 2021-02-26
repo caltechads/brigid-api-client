@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union, cast
 
 import attr
 
 from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PatchedOrganization")
 
 
 @attr.s(auto_attribs=True)
@@ -46,8 +48,8 @@ class PatchedOrganization:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "PatchedOrganization":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         url = d.pop("url", UNSET)
 
@@ -61,7 +63,7 @@ class PatchedOrganization:
 
         teams = cast(List[str], d.pop("teams", UNSET))
 
-        patched_organization = PatchedOrganization(
+        patched_organization = cls(
             url=url,
             id=id,
             directory_name=directory_name,

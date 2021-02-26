@@ -43,4 +43,4 @@ class AuthenticatedClient(Client):
 
     def get_headers(self) -> Dict[str, str]:
         """ Get headers to be used in authenticated endpoints """
-        return {"Authorization": f"Token {self.token}", **self.headers}
+        return {"Authorization": f"Bearer {self.token}", **self.headers}

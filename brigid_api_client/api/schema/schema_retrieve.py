@@ -16,25 +16,30 @@ def _get_kwargs(
     url = "{}/api/v1/schema/".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
+    cookies: Dict[str, Any] = client.get_cookies()
 
     json_format: Union[Unset, SchemaRetrieveFormat] = UNSET
     if not isinstance(format, Unset):
         json_format = format
 
-    params: Dict[str, Any] = {}
-    if format is not UNSET:
-        params["format"] = json_format
+    params: Dict[str, Any] = {
+        "format": json_format,
+    }
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": client.get_cookies(),
+        "cookies": cookies,
         "timeout": client.get_timeout(),
         "params": params,
+        "verify": False,
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[SchemaRetrieveResponse_200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[SchemaRetrieveResponse_200]:
     if response.status_code == 200:
         response_200 = SchemaRetrieveResponse_200.from_dict(response.json())
 
@@ -42,7 +47,9 @@ def _parse_response(*, response: httpx.Response) -> Optional[SchemaRetrieveRespo
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[SchemaRetrieveResponse_200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[SchemaRetrieveResponse_200]:
     return Response(
         status_code=response.status_code,
         content=response.content,

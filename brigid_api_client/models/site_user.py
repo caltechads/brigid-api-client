@@ -1,10 +1,12 @@
 import datetime
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union, cast
 
 import attr
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="SiteUser")
 
 
 @attr.s(auto_attribs=True)
@@ -16,13 +18,17 @@ class SiteUser:
     id: int
     username: str
     fullname: str
+    date_joined: datetime.datetime
     person_types: List[str]
     team: str
+    aws_accounts: List[str]
+    aws_vpcs: List[str]
+    owned_applications: List[str]
+    step_invocations: List[str]
     first_name: Union[Unset, str] = UNSET
     last_name: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
-    date_joined: Union[Unset, datetime.datetime] = UNSET
     employee_number: Union[Unset, Optional[int]] = UNSET
     caltech_status: Union[Unset, Optional[str]] = UNSET
     notes: Union[Unset, Optional[str]] = UNSET
@@ -33,17 +39,23 @@ class SiteUser:
         id = self.id
         username = self.username
         fullname = self.fullname
+        date_joined = self.date_joined.isoformat()
+
         person_types = self.person_types
 
         team = self.team
+        aws_accounts = self.aws_accounts
+
+        aws_vpcs = self.aws_vpcs
+
+        owned_applications = self.owned_applications
+
+        step_invocations = self.step_invocations
+
         first_name = self.first_name
         last_name = self.last_name
         email = self.email
         is_active = self.is_active
-        date_joined: Union[Unset, str] = UNSET
-        if not isinstance(self.date_joined, Unset):
-            date_joined = self.date_joined.isoformat()
-
         employee_number = self.employee_number
         caltech_status = self.caltech_status
         notes = self.notes
@@ -56,8 +68,13 @@ class SiteUser:
                 "id": id,
                 "username": username,
                 "fullname": fullname,
+                "date_joined": date_joined,
                 "person_types": person_types,
                 "team": team,
+                "aws_accounts": aws_accounts,
+                "aws_vpcs": aws_vpcs,
+                "owned_applications": owned_applications,
+                "step_invocations": step_invocations,
             }
         )
         if first_name is not UNSET:
@@ -68,8 +85,6 @@ class SiteUser:
             field_dict["email"] = email
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
-        if date_joined is not UNSET:
-            field_dict["date_joined"] = date_joined
         if employee_number is not UNSET:
             field_dict["employee_number"] = employee_number
         if caltech_status is not UNSET:
@@ -79,8 +94,8 @@ class SiteUser:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "SiteUser":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         url = d.pop("url")
 
@@ -90,9 +105,19 @@ class SiteUser:
 
         fullname = d.pop("fullname")
 
+        date_joined = isoparse(d.pop("date_joined"))
+
         person_types = cast(List[str], d.pop("person_types"))
 
         team = d.pop("team")
+
+        aws_accounts = cast(List[str], d.pop("aws_accounts"))
+
+        aws_vpcs = cast(List[str], d.pop("aws_vpcs"))
+
+        owned_applications = cast(List[str], d.pop("owned_applications"))
+
+        step_invocations = cast(List[str], d.pop("step_invocations"))
 
         first_name = d.pop("first_name", UNSET)
 
@@ -102,29 +127,28 @@ class SiteUser:
 
         is_active = d.pop("is_active", UNSET)
 
-        date_joined = None
-        _date_joined = d.pop("date_joined", UNSET)
-        if _date_joined is not None:
-            date_joined = isoparse(cast(str, _date_joined))
-
         employee_number = d.pop("employee_number", UNSET)
 
         caltech_status = d.pop("caltech_status", UNSET)
 
         notes = d.pop("notes", UNSET)
 
-        site_user = SiteUser(
+        site_user = cls(
             url=url,
             id=id,
             username=username,
             fullname=fullname,
+            date_joined=date_joined,
             person_types=person_types,
             team=team,
+            aws_accounts=aws_accounts,
+            aws_vpcs=aws_vpcs,
+            owned_applications=owned_applications,
+            step_invocations=step_invocations,
             first_name=first_name,
             last_name=last_name,
             email=email,
             is_active=is_active,
-            date_joined=date_joined,
             employee_number=employee_number,
             caltech_status=caltech_status,
             notes=notes,

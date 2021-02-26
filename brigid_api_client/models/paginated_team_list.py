@@ -1,9 +1,11 @@
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 import attr
 
 from ..models.team import Team
 from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PaginatedTeamList")
 
 
 @attr.s(auto_attribs=True)
@@ -42,8 +44,8 @@ class PaginatedTeamList:
 
         return field_dict
 
-    @staticmethod
-    def from_dict(src_dict: Dict[str, Any]) -> "PaginatedTeamList":
+    @classmethod
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         count = d.pop("count", UNSET)
 
@@ -58,7 +60,7 @@ class PaginatedTeamList:
 
             results.append(results_item)
 
-        paginated_team_list = PaginatedTeamList(
+        paginated_team_list = cls(
             count=count,
             next=next,
             previous=previous,
