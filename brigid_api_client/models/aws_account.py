@@ -21,6 +21,7 @@ class AWSAccount:
     pipelines: List[str]
     aws_vpcs: List[str]
     created: datetime.datetime
+    modified: datetime.datetime
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -37,6 +38,8 @@ class AWSAccount:
 
         created = self.created.isoformat()
 
+        modified = self.modified.isoformat()
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -50,6 +53,7 @@ class AWSAccount:
                 "pipelines": pipelines,
                 "aws_vpcs": aws_vpcs,
                 "created": created,
+                "modified": modified,
             }
         )
 
@@ -76,6 +80,8 @@ class AWSAccount:
 
         created = isoparse(d.pop("created"))
 
+        modified = isoparse(d.pop("modified"))
+
         aws_account = cls(
             url=url,
             id=id,
@@ -86,6 +92,7 @@ class AWSAccount:
             pipelines=pipelines,
             aws_vpcs=aws_vpcs,
             created=created,
+            modified=modified,
         )
 
         aws_account.additional_properties = d

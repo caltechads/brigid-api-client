@@ -25,7 +25,10 @@ class PatchedSoftware:
     documentation_url: Union[Unset, Optional[str]] = UNSET
     applications: Union[Unset, List[str]] = UNSET
     authors: Union[Unset, List[str]] = UNSET
+    repo_created: Union[Unset, Optional[datetime.datetime]] = UNSET
+    repo_modified: Union[Unset, Optional[datetime.datetime]] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -46,9 +49,23 @@ class PatchedSoftware:
         if not isinstance(self.authors, Unset):
             authors = self.authors
 
+        repo_created: Union[Unset, str] = UNSET
+        if not isinstance(self.repo_created, Unset):
+            repo_created = self.repo_created.isoformat() if self.repo_created else None
+
+        repo_modified: Union[Unset, str] = UNSET
+        if not isinstance(self.repo_modified, Unset):
+            repo_modified = (
+                self.repo_modified.isoformat() if self.repo_modified else None
+            )
+
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
+
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -75,8 +92,14 @@ class PatchedSoftware:
             field_dict["applications"] = applications
         if authors is not UNSET:
             field_dict["authors"] = authors
+        if repo_created is not UNSET:
+            field_dict["repo_created"] = repo_created
+        if repo_modified is not UNSET:
+            field_dict["repo_modified"] = repo_modified
         if created is not UNSET:
             field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
 
         return field_dict
 
@@ -105,10 +128,25 @@ class PatchedSoftware:
 
         authors = cast(List[str], d.pop("authors", UNSET))
 
+        repo_created = None
+        _repo_created = d.pop("repo_created", UNSET)
+        if _repo_created is not None and not isinstance(_repo_created, Unset):
+            repo_created = isoparse(_repo_created)
+
+        repo_modified = None
+        _repo_modified = d.pop("repo_modified", UNSET)
+        if _repo_modified is not None and not isinstance(_repo_modified, Unset):
+            repo_modified = isoparse(_repo_modified)
+
         created: Union[Unset, datetime.datetime] = UNSET
         _created = d.pop("created", UNSET)
         if not isinstance(_created, Unset):
             created = isoparse(_created)
+
+        modified: Union[Unset, datetime.datetime] = UNSET
+        _modified = d.pop("modified", UNSET)
+        if not isinstance(_modified, Unset):
+            modified = isoparse(_modified)
 
         patched_software = cls(
             url=url,
@@ -122,7 +160,10 @@ class PatchedSoftware:
             documentation_url=documentation_url,
             applications=applications,
             authors=authors,
+            repo_created=repo_created,
+            repo_modified=repo_modified,
             created=created,
+            modified=modified,
         )
 
         patched_software.additional_properties = d

@@ -1,7 +1,6 @@
 from typing import Any, Dict, Optional
 
 import httpx
-from attr import asdict
 
 from ...client import AuthenticatedClient
 from ...models.organization import Organization
@@ -12,7 +11,6 @@ def _get_kwargs(
     *,
     client: AuthenticatedClient,
     id: int,
-    form_data: Organization,
     json_body: Organization,
 ) -> Dict[str, Any]:
     url = "{}/api/v1/organizations/{id}/".format(client.base_url, id=id)
@@ -27,7 +25,6 @@ def _get_kwargs(
         "headers": headers,
         "cookies": cookies,
         "timeout": client.get_timeout(),
-        "data": asdict(form_data),
         "json": json_json_body,
         "verify": False,
     }
@@ -54,13 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     id: int,
-    form_data: Organization,
     json_body: Organization,
 ) -> Response[Organization]:
     kwargs = _get_kwargs(
         client=client,
         id=id,
-        form_data=form_data,
         json_body=json_body,
     )
 
@@ -75,7 +70,6 @@ def sync(
     *,
     client: AuthenticatedClient,
     id: int,
-    form_data: Organization,
     json_body: Organization,
 ) -> Optional[Organization]:
     """Organizations own Teams.
@@ -89,7 +83,6 @@ def sync(
     return sync_detailed(
         client=client,
         id=id,
-        form_data=form_data,
         json_body=json_body,
     ).parsed
 
@@ -98,13 +91,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     id: int,
-    form_data: Organization,
     json_body: Organization,
 ) -> Response[Organization]:
     kwargs = _get_kwargs(
         client=client,
         id=id,
-        form_data=form_data,
         json_body=json_body,
     )
 
@@ -118,7 +109,6 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     id: int,
-    form_data: Organization,
     json_body: Organization,
 ) -> Optional[Organization]:
     """Organizations own Teams.
@@ -133,7 +123,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             id=id,
-            form_data=form_data,
             json_body=json_body,
         )
     ).parsed

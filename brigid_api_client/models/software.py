@@ -24,8 +24,11 @@ class Software:
     applications: List[str]
     authors: List[str]
     created: datetime.datetime
+    modified: datetime.datetime
     trello_board_url: Union[Unset, Optional[str]] = UNSET
     documentation_url: Union[Unset, Optional[str]] = UNSET
+    repo_created: Union[Unset, Optional[datetime.datetime]] = UNSET
+    repo_modified: Union[Unset, Optional[datetime.datetime]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -42,8 +45,19 @@ class Software:
 
         created = self.created.isoformat()
 
+        modified = self.modified.isoformat()
+
         trello_board_url = self.trello_board_url
         documentation_url = self.documentation_url
+        repo_created: Union[Unset, str] = UNSET
+        if not isinstance(self.repo_created, Unset):
+            repo_created = self.repo_created.isoformat() if self.repo_created else None
+
+        repo_modified: Union[Unset, str] = UNSET
+        if not isinstance(self.repo_modified, Unset):
+            repo_modified = (
+                self.repo_modified.isoformat() if self.repo_modified else None
+            )
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -59,12 +73,17 @@ class Software:
                 "applications": applications,
                 "authors": authors,
                 "created": created,
+                "modified": modified,
             }
         )
         if trello_board_url is not UNSET:
             field_dict["trello_board_url"] = trello_board_url
         if documentation_url is not UNSET:
             field_dict["documentation_url"] = documentation_url
+        if repo_created is not UNSET:
+            field_dict["repo_created"] = repo_created
+        if repo_modified is not UNSET:
+            field_dict["repo_modified"] = repo_modified
 
         return field_dict
 
@@ -91,9 +110,21 @@ class Software:
 
         created = isoparse(d.pop("created"))
 
+        modified = isoparse(d.pop("modified"))
+
         trello_board_url = d.pop("trello_board_url", UNSET)
 
         documentation_url = d.pop("documentation_url", UNSET)
+
+        repo_created = None
+        _repo_created = d.pop("repo_created", UNSET)
+        if _repo_created is not None and not isinstance(_repo_created, Unset):
+            repo_created = isoparse(_repo_created)
+
+        repo_modified = None
+        _repo_modified = d.pop("repo_modified", UNSET)
+        if _repo_modified is not None and not isinstance(_repo_modified, Unset):
+            repo_modified = isoparse(_repo_modified)
 
         software = cls(
             url=url,
@@ -106,8 +137,11 @@ class Software:
             applications=applications,
             authors=authors,
             created=created,
+            modified=modified,
             trello_board_url=trello_board_url,
             documentation_url=documentation_url,
+            repo_created=repo_created,
+            repo_modified=repo_modified,
         )
 
         software.additional_properties = d

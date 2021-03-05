@@ -23,6 +23,7 @@ class PatchedAWSAccount:
     pipelines: Union[Unset, List[str]] = UNSET
     aws_vpcs: Union[Unset, List[str]] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -47,6 +48,10 @@ class PatchedAWSAccount:
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
 
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -68,6 +73,8 @@ class PatchedAWSAccount:
             field_dict["aws_vpcs"] = aws_vpcs
         if created is not UNSET:
             field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
 
         return field_dict
 
@@ -95,6 +102,11 @@ class PatchedAWSAccount:
         if not isinstance(_created, Unset):
             created = isoparse(_created)
 
+        modified: Union[Unset, datetime.datetime] = UNSET
+        _modified = d.pop("modified", UNSET)
+        if not isinstance(_modified, Unset):
+            modified = isoparse(_modified)
+
         patched_aws_account = cls(
             url=url,
             id=id,
@@ -105,6 +117,7 @@ class PatchedAWSAccount:
             pipelines=pipelines,
             aws_vpcs=aws_vpcs,
             created=created,
+            modified=modified,
         )
 
         patched_aws_account.additional_properties = d

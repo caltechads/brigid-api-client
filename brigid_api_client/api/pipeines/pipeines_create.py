@@ -1,7 +1,6 @@
 from typing import Any, Dict, Optional
 
 import httpx
-from attr import asdict
 
 from ...client import AuthenticatedClient
 from ...models.pipeline import Pipeline
@@ -11,7 +10,6 @@ from ...types import Response
 def _get_kwargs(
     *,
     client: AuthenticatedClient,
-    form_data: Pipeline,
     json_body: Pipeline,
 ) -> Dict[str, Any]:
     url = "{}/api/v1/pipeines/".format(client.base_url)
@@ -26,7 +24,6 @@ def _get_kwargs(
         "headers": headers,
         "cookies": cookies,
         "timeout": client.get_timeout(),
-        "data": asdict(form_data),
         "json": json_json_body,
         "verify": False,
     }
@@ -52,12 +49,10 @@ def _build_response(*, response: httpx.Response) -> Response[Pipeline]:
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    form_data: Pipeline,
     json_body: Pipeline,
 ) -> Response[Pipeline]:
     kwargs = _get_kwargs(
         client=client,
-        form_data=form_data,
         json_body=json_body,
     )
 
@@ -71,14 +66,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    form_data: Pipeline,
     json_body: Pipeline,
 ) -> Optional[Pipeline]:
     """ A collection of related applications. """
 
     return sync_detailed(
         client=client,
-        form_data=form_data,
         json_body=json_body,
     ).parsed
 
@@ -86,12 +79,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    form_data: Pipeline,
     json_body: Pipeline,
 ) -> Response[Pipeline]:
     kwargs = _get_kwargs(
         client=client,
-        form_data=form_data,
         json_body=json_body,
     )
 
@@ -104,7 +95,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    form_data: Pipeline,
     json_body: Pipeline,
 ) -> Optional[Pipeline]:
     """ A collection of related applications. """
@@ -112,7 +102,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            form_data=form_data,
             json_body=json_body,
         )
     ).parsed
