@@ -57,5 +57,3 @@ $ cd ..
 $ wget --no-check-certificate -O schema.yml https://localhost:8063/api/v1/schema/
 $ openapi-python-client update --path schema.yml  --custom-template-path=./brigid-api-client/templates/  
 ```
-
-Then edit `brigid_api_client/client.py` and, in `AuthenticatedClient` , change "`Bearer`" to "`Token`".
