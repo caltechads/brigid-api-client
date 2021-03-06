@@ -11,13 +11,13 @@ T = TypeVar("T", bound="SoftwareImport")
 class SoftwareImport:
     """  """
 
-    service: None
+    service: str
     repository: str
     workspace: Union[Unset, Optional[str]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        service = None
+        service = self.service
 
         repository = self.repository
         workspace = self.workspace
