@@ -34,6 +34,18 @@ class Endpoint:
         self.client = client
 
     def resolve_object_id(self, identifier):
+        """
+        If `identifier` is not an integer, use the list endpoint to try to resolve it based on filtering by
+        `self.id_resolver_filter`.  Return the integer id of the object in question.
+
+        This allows our single object endpoints to accept either an ID or a name for our objects so that end users
+        don't have to do any lookups before using those endpoints.
+
+        :param identifier Union[int, str]: an id or name for a single object
+
+        :rtype: int
+
+        """
         try:
             obj_id = int(identifier)
         except ValueError:
@@ -85,7 +97,7 @@ class Endpoint:
         if 'id' in results:
             return {k: v for k, v in results if k in kwargs}
         else:
-            raise self.UpdateFailed(
+            raise self.OperationFailed(
                 f'Update of {self.object_class.__name__}(id={object_id}) failed',
                 errors=results
             )
@@ -105,7 +117,7 @@ class PagedResultsMixin:
             params = parse_qs(urlparse(response.next).query)
             offset = int(params['offset'][0])
             limit = int(params['limit'][0])
-            response = function(
+            response = self.list_class.sync(
                 client=self.client,
                 limit=limit,
                 offset=offset,

@@ -15,6 +15,14 @@ from ...types import Response, UNSET
 {% set return_string = return_type(endpoint) %}
 {% set parsed_responses = (endpoint.responses | length > 0) and return_string != "None" %}
 
+LIST_FILTERS = [
+    {% for kwarg in kwargs(endpoint) %}
+        {% if kwarg not in ['expand', 'limit', 'client', 'offset'] %}
+            '{{ kwarg }}',
+        {% endif %}
+    {% endfor %}
+]
+
 def _get_kwargs(
     {{ arguments(endpoint) | indent(4) }}
 ) -> Dict[str, Any]:

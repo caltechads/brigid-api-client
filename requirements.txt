@@ -3,6 +3,7 @@
 # ------------------------------------------------------------------------------
 ipython==7.13.0                               # https://github.com/ipython/ipython
 pytz==2019.1                                  # https://github.com/stub42/pytz
+giturlparse==0.9.2                            # https://github.com/nephila/giturlparse
 
 # Deployment
 # ------------------------------------------------------------------------------
