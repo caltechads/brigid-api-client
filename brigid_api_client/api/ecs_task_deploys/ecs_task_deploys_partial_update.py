@@ -7,6 +7,8 @@ from ...models.ecs_task_deploy import ECSTaskDeploy
 from ...models.patched_ecs_task_deploy import PatchedECSTaskDeploy
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

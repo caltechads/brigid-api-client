@@ -7,6 +7,14 @@ from ...models.aws_accounts_list_expand import AwsAccountsListExpand
 from ...models.paginated_aws_account_list import PaginatedAWSAccountList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "contact_fullname": "str",
+    "contact_username": "str",
+    "name": "str",
+    "team_name": "str",
+    "vpc_name": "str",
+}
+
 
 def _get_kwargs(
     *,

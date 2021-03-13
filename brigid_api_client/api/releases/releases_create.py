@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.release import Release
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

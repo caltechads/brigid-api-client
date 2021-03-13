@@ -7,6 +7,8 @@ from ...models.deployment import Deployment
 from ...models.patched_deployment import PatchedDeployment
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

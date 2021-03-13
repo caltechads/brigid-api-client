@@ -7,6 +7,8 @@ from ...models.aws_account import AWSAccount
 from ...models.patched_aws_account import PatchedAWSAccount
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

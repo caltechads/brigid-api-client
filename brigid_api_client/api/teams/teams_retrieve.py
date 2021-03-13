@@ -7,6 +7,8 @@ from ...models.team import Team
 from ...models.teams_retrieve_expand import TeamsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

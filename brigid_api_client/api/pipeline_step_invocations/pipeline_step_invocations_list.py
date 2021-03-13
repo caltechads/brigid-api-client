@@ -9,6 +9,18 @@ from ...models.pipeline_step_invocations_list_expand import (
 )
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "invoker_fullname": "str",
+    "invoker_username": "str",
+    "pipeline_name": "str",
+    "released_by_fullname": "str",
+    "released_by_username": "str",
+    "sha": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

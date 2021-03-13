@@ -7,6 +7,8 @@ from ...models.deployment import Deployment
 from ...models.deployments_retrieve_expand import DeploymentsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

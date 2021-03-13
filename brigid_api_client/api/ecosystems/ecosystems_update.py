@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.ecosystem import Ecosystem
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

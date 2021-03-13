@@ -7,6 +7,8 @@ from ...models.ecosystem import Ecosystem
 from ...models.ecosystems_retrieve_expand import EcosystemsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

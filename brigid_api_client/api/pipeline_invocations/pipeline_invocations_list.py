@@ -7,6 +7,17 @@ from ...models.paginated_pipeline_invocation_list import PaginatedPipelineInvoca
 from ...models.pipeline_invocations_list_expand import PipelineInvocationsListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "aws_account_name": "str",
+    "fullname": "str",
+    "pipeline_name": "str",
+    "sha": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

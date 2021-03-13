@@ -7,6 +7,8 @@ from ...models.aws_tasks_retrieve_expand import AwsTasksRetrieveExpand
 from ...models.awsecs_task import AWSECSTask
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

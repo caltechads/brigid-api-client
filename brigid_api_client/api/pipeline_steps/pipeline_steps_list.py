@@ -7,6 +7,14 @@ from ...models.paginated_step_list import PaginatedStepList
 from ...models.pipeline_steps_list_expand import PipelineStepsListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "name": "str",
+    "pipeline_name": "str",
+    "step_type": "str",
+}
+
 
 def _get_kwargs(
     *,

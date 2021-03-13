@@ -7,6 +7,8 @@ from ...models.patched_pipeline import PatchedPipeline
 from ...models.pipeline import Pipeline
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

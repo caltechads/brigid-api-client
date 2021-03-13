@@ -7,6 +7,14 @@ from ...models.paginated_site_user_list import PaginatedSiteUserList
 from ...models.site_users_list_expand import SiteUsersListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "employee_number": "int",
+    "fullname": "str",
+    "person_type": "str",
+    "team_name": "str",
+    "username": "str",
+}
+
 
 def _get_kwargs(
     *,

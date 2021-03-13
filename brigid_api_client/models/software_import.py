@@ -38,7 +38,7 @@ class SoftwareImport:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        service = None
+        service = d.pop("service")
 
         repository = d.pop("repository")
 

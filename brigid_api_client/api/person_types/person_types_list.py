@@ -6,6 +6,10 @@ from ...client import AuthenticatedClient
 from ...models.paginated_person_type_list import PaginatedPersonTypeList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "name": "str",
+}
+
 
 def _get_kwargs(
     *,

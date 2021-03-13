@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.ecs_task_deploy import ECSTaskDeploy
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

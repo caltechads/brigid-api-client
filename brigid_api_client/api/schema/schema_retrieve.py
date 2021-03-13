@@ -7,6 +7,10 @@ from ...models.schema_retrieve_format import SchemaRetrieveFormat
 from ...models.schema_retrieve_response_200 import SchemaRetrieveResponse_200
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "format": "SchemaRetrieveFormat",
+}
+
 
 def _get_kwargs(
     *,

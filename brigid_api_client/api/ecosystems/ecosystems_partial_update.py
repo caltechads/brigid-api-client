@@ -7,6 +7,8 @@ from ...models.ecosystem import Ecosystem
 from ...models.patched_ecosystem import PatchedEcosystem
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

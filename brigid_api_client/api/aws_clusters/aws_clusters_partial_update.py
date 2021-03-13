@@ -7,6 +7,8 @@ from ...models.awsecs_cluster import AWSECSCluster
 from ...models.patched_awsecs_cluster import PatchedAWSECSCluster
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

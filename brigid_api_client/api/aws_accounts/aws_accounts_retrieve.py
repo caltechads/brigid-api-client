@@ -7,6 +7,8 @@ from ...models.aws_account import AWSAccount
 from ...models.aws_accounts_retrieve_expand import AwsAccountsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

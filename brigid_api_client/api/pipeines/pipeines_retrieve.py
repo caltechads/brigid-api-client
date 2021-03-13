@@ -7,6 +7,8 @@ from ...models.pipeines_retrieve_expand import PipeinesRetrieveExpand
 from ...models.pipeline import Pipeline
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,15 @@ from ...models.aws_vpcs_list_expand import AwsVpcsListExpand
 from ...models.paginated_awsvpc_list import PaginatedAWSVPCList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "aws_account_name": "str",
+    "contact_fullname": "str",
+    "contact_username": "str",
+    "ecs_cluster_name": "str",
+    "name": "str",
+    "team_name": "str",
+}
+
 
 def _get_kwargs(
     *,

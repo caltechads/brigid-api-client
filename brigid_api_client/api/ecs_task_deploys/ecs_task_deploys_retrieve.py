@@ -7,6 +7,8 @@ from ...models.ecs_task_deploy import ECSTaskDeploy
 from ...models.ecs_task_deploys_retrieve_expand import EcsTaskDeploysRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

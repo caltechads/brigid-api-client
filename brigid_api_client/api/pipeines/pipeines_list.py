@@ -7,6 +7,13 @@ from ...models.paginated_pipeline_list import PaginatedPipelineList
 from ...models.pipeines_list_expand import PipeinesListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "aws_account_name": "str",
+    "name": "str",
+}
+
 
 def _get_kwargs(
     *,

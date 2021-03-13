@@ -9,6 +9,8 @@ from ...models.pipeline_invocations_retrieve_expand import (
 )
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

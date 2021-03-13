@@ -7,6 +7,15 @@ from ...models.paginated_test_result_list import PaginatedTestResultList
 from ...models.test_results_list_expand import TestResultsListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "fullname": "str",
+    "sha": "str",
+    "software_machine_name": "str",
+    "software_name": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

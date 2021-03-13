@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.site_user import SiteUser
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

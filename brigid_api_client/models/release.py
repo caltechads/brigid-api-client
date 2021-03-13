@@ -26,7 +26,9 @@ class Release:
     step_invocations: List[str]
     test_results: List[str]
     created: datetime.datetime
+    modified: datetime.datetime
     changelog: Union[Unset, Optional[str]] = UNSET
+    release_time: Union[Unset, Optional[datetime.datetime]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -48,7 +50,12 @@ class Release:
 
         created = self.created.isoformat()
 
+        modified = self.modified.isoformat()
+
         changelog = self.changelog
+        release_time: Union[Unset, str] = UNSET
+        if not isinstance(self.release_time, Unset):
+            release_time = self.release_time.isoformat() if self.release_time else None
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -66,10 +73,13 @@ class Release:
                 "step_invocations": step_invocations,
                 "test_results": test_results,
                 "created": created,
+                "modified": modified,
             }
         )
         if changelog is not UNSET:
             field_dict["changelog"] = changelog
+        if release_time is not UNSET:
+            field_dict["release_time"] = release_time
 
         return field_dict
 
@@ -100,7 +110,14 @@ class Release:
 
         created = isoparse(d.pop("created"))
 
+        modified = isoparse(d.pop("modified"))
+
         changelog = d.pop("changelog", UNSET)
+
+        release_time = None
+        _release_time = d.pop("release_time", UNSET)
+        if _release_time is not None and not isinstance(_release_time, Unset):
+            release_time = isoparse(_release_time)
 
         release = cls(
             url=url,
@@ -115,7 +132,9 @@ class Release:
             step_invocations=step_invocations,
             test_results=test_results,
             created=created,
+            modified=modified,
             changelog=changelog,
+            release_time=release_time,
         )
 
         release.additional_properties = d

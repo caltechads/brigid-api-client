@@ -7,6 +7,8 @@ from ...models.aws_clusters_retrieve_expand import AwsClustersRetrieveExpand
 from ...models.awsecs_cluster import AWSECSCluster
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

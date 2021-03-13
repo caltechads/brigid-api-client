@@ -7,6 +7,13 @@ from ...models.aws_services_list_expand import AwsServicesListExpand
 from ...models.paginated_awsecs_service_list import PaginatedAWSECSServiceList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_name": "str",
+    "cluster_name": "str",
+    "environment": "str",
+    "name": "str",
+}
+
 
 def _get_kwargs(
     *,

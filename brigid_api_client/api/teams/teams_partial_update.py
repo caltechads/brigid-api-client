@@ -7,6 +7,8 @@ from ...models.patched_team import PatchedTeam
 from ...models.team import Team
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,13 @@ from ...models.aws_tasks_list_expand import AwsTasksListExpand
 from ...models.paginated_awsecs_task_list import PaginatedAWSECSTaskList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_name": "str",
+    "cluster_name": "str",
+    "environment": "str",
+    "task_family": "str",
+}
+
 
 def _get_kwargs(
     *,

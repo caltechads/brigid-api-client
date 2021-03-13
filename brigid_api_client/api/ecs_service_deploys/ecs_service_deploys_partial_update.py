@@ -7,6 +7,8 @@ from ...models.ecs_service_deploy import ECSServiceDeploy
 from ...models.patched_ecs_service_deploy import PatchedECSServiceDeploy
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

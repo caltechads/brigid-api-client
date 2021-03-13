@@ -7,6 +7,8 @@ from ...models.action_response import ActionResponse
 from ...models.software_import import SoftwareImport
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

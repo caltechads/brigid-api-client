@@ -1,3 +1,4 @@
+import datetime
 from typing import Any, Dict, Optional, Union
 
 import httpx
@@ -7,6 +8,16 @@ from ...models.paginated_release_list import PaginatedReleaseList
 from ...models.releases_list_expand import ReleasesListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "fullname": "str",
+    "released_after": "datetime.datetime",
+    "released_before": "datetime.datetime",
+    "software_machine_name": "str",
+    "software_name": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,
@@ -15,6 +26,8 @@ def _get_kwargs(
     fullname: Union[Unset, str] = UNSET,
     limit: Union[Unset, int] = UNSET,
     offset: Union[Unset, int] = UNSET,
+    released_after: Union[Unset, Optional[datetime.datetime]] = UNSET,
+    released_before: Union[Unset, Optional[datetime.datetime]] = UNSET,
     software_machine_name: Union[Unset, str] = UNSET,
     software_name: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -29,11 +42,21 @@ def _get_kwargs(
     if not isinstance(expand, Unset):
         json_expand = expand
 
+    json_released_after: Union[Unset, str] = UNSET
+    if not isinstance(released_after, Unset):
+        json_released_after = released_after.isoformat() if released_after else None
+
+    json_released_before: Union[Unset, str] = UNSET
+    if not isinstance(released_before, Unset):
+        json_released_before = released_before.isoformat() if released_before else None
+
     params: Dict[str, Any] = {
         "expand": json_expand,
         "fullname": fullname,
         "limit": limit,
         "offset": offset,
+        "released_after": json_released_after,
+        "released_before": json_released_before,
         "software_machine_name": software_machine_name,
         "software_name": software_name,
         "username": username,
@@ -75,6 +98,8 @@ def sync_detailed(
     fullname: Union[Unset, str] = UNSET,
     limit: Union[Unset, int] = UNSET,
     offset: Union[Unset, int] = UNSET,
+    released_after: Union[Unset, Optional[datetime.datetime]] = UNSET,
+    released_before: Union[Unset, Optional[datetime.datetime]] = UNSET,
     software_machine_name: Union[Unset, str] = UNSET,
     software_name: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -86,6 +111,8 @@ def sync_detailed(
         fullname=fullname,
         limit=limit,
         offset=offset,
+        released_after=released_after,
+        released_before=released_before,
         software_machine_name=software_machine_name,
         software_name=software_name,
         username=username,
@@ -106,6 +133,8 @@ def sync(
     fullname: Union[Unset, str] = UNSET,
     limit: Union[Unset, int] = UNSET,
     offset: Union[Unset, int] = UNSET,
+    released_after: Union[Unset, Optional[datetime.datetime]] = UNSET,
+    released_before: Union[Unset, Optional[datetime.datetime]] = UNSET,
     software_machine_name: Union[Unset, str] = UNSET,
     software_name: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -119,6 +148,8 @@ def sync(
         fullname=fullname,
         limit=limit,
         offset=offset,
+        released_after=released_after,
+        released_before=released_before,
         software_machine_name=software_machine_name,
         software_name=software_name,
         username=username,
@@ -133,6 +164,8 @@ async def asyncio_detailed(
     fullname: Union[Unset, str] = UNSET,
     limit: Union[Unset, int] = UNSET,
     offset: Union[Unset, int] = UNSET,
+    released_after: Union[Unset, Optional[datetime.datetime]] = UNSET,
+    released_before: Union[Unset, Optional[datetime.datetime]] = UNSET,
     software_machine_name: Union[Unset, str] = UNSET,
     software_name: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -144,6 +177,8 @@ async def asyncio_detailed(
         fullname=fullname,
         limit=limit,
         offset=offset,
+        released_after=released_after,
+        released_before=released_before,
         software_machine_name=software_machine_name,
         software_name=software_name,
         username=username,
@@ -163,6 +198,8 @@ async def asyncio(
     fullname: Union[Unset, str] = UNSET,
     limit: Union[Unset, int] = UNSET,
     offset: Union[Unset, int] = UNSET,
+    released_after: Union[Unset, Optional[datetime.datetime]] = UNSET,
+    released_before: Union[Unset, Optional[datetime.datetime]] = UNSET,
     software_machine_name: Union[Unset, str] = UNSET,
     software_name: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -177,6 +214,8 @@ async def asyncio(
             fullname=fullname,
             limit=limit,
             offset=offset,
+            released_after=released_after,
+            released_before=released_before,
             software_machine_name=software_machine_name,
             software_name=software_name,
             username=username,

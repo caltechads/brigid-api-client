@@ -7,6 +7,8 @@ from ...models.software import Software
 from ...models.software_retrieve_expand import SoftwareRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.awsecs_cluster import AWSECSCluster
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,8 @@ from ...models.release import Release
 from ...models.releases_retrieve_expand import ReleasesRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

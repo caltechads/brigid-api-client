@@ -7,6 +7,16 @@ from ...models.paginated_team_list import PaginatedTeamList
 from ...models.teams_list_expand import TeamsListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "abbr": "str",
+    "directory_name": "str",
+    "friendly_name": "str",
+    "organization_abbr": "str",
+    "organization_directory_name": "str",
+    "organization_friendly_name": "str",
+    "organization_id": "int",
+}
+
 
 def _get_kwargs(
     *,

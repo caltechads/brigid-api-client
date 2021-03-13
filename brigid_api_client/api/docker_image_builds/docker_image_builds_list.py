@@ -7,6 +7,15 @@ from ...models.docker_image_builds_list_expand import DockerImageBuildsListExpan
 from ...models.paginated_docker_image_build_list import PaginatedDockerImageBuildList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "fullname": "str",
+    "sha": "str",
+    "software_machine_name": "str",
+    "software_name": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

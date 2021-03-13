@@ -7,6 +7,8 @@ from ...models.environment import Environment
 from ...models.environments_retrieve_expand import EnvironmentsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

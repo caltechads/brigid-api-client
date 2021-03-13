@@ -9,6 +9,8 @@ from ...models.ecs_service_deploys_retrieve_expand import (
 )
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,15 @@ from ...models.environments_list_expand import EnvironmentsListExpand
 from ...models.paginated_environment_list import PaginatedEnvironmentList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "ecs_service_name": "str",
+    "ecs_task_family": "str",
+    "machine_name": "str",
+    "name": "str",
+}
+
 
 def _get_kwargs(
     *,

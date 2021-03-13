@@ -7,6 +7,13 @@ from ...models.ecosystems_list_expand import EcosystemsListExpand
 from ...models.paginated_ecosystem_list import PaginatedEcosystemList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "description": "str",
+    "name": "str",
+}
+
 
 def _get_kwargs(
     *,

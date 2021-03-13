@@ -7,6 +7,8 @@ from ...models.organization import Organization
 from ...models.patched_organization import PatchedOrganization
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,8 @@ from ...models.awsvpc import AWSVPC
 from ...models.patched_awsvpc import PatchedAWSVPC
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

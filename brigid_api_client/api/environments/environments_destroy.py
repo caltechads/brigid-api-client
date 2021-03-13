@@ -5,6 +5,8 @@ import httpx
 from ...client import AuthenticatedClient
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

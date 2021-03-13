@@ -7,6 +7,8 @@ from ...models.site_user import SiteUser
 from ...models.site_users_retrieve_expand import SiteUsersRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,12 @@ from ...models.organizations_list_expand import OrganizationsListExpand
 from ...models.paginated_organization_list import PaginatedOrganizationList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "abbr": "str",
+    "directory_name": "str",
+    "friendly_name": "str",
+}
+
 
 def _get_kwargs(
     *,

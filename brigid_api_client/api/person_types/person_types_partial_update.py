@@ -7,6 +7,8 @@ from ...models.patched_person_type import PatchedPersonType
 from ...models.person_type import PersonType
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

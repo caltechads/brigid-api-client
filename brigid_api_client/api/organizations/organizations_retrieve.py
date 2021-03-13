@@ -7,6 +7,8 @@ from ...models.organization import Organization
 from ...models.organizations_retrieve_expand import OrganizationsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,8 @@ from ...models.aws_vpcs_retrieve_expand import AwsVpcsRetrieveExpand
 from ...models.awsvpc import AWSVPC
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

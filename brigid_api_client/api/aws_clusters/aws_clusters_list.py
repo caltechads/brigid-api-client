@@ -7,6 +7,14 @@ from ...models.aws_clusters_list_expand import AwsClustersListExpand
 from ...models.paginated_awsecs_cluster_list import PaginatedAWSECSClusterList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "aws_account_name": "str",
+    "name": "str",
+    "service_name": "str",
+    "task_family": "str",
+    "vpc_name": "str",
+}
+
 
 def _get_kwargs(
     *,

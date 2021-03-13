@@ -7,6 +7,12 @@ from ...models.paginated_software_list import PaginatedSoftwareList
 from ...models.software_list_expand import SoftwareListExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "author_username": "str",
+    "machine_name": "str",
+    "name": "str",
+}
+
 
 def _get_kwargs(
     *,

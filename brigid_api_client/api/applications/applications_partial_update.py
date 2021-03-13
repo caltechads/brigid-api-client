@@ -7,6 +7,8 @@ from ...models.application import Application
 from ...models.patched_application import PatchedApplication
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -7,6 +7,8 @@ from ...models.awsecs_task import AWSECSTask
 from ...models.patched_awsecs_task import PatchedAWSECSTask
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

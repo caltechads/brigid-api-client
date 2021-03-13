@@ -7,6 +7,8 @@ from ...models.test_result import TestResult
 from ...models.test_results_retrieve_expand import TestResultsRetrieveExpand
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

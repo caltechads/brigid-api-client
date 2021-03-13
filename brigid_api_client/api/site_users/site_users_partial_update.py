@@ -7,6 +7,8 @@ from ...models.patched_site_user import PatchedSiteUser
 from ...models.site_user import SiteUser
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

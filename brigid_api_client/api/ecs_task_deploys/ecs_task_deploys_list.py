@@ -7,6 +7,18 @@ from ...models.ecs_task_deploys_list_expand import EcsTaskDeploysListExpand
 from ...models.paginated_ecs_task_deploy_list import PaginatedECSTaskDeployList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "ecs_task_family": "str",
+    "environment_machine_name": "str",
+    "environment_name": "str",
+    "fullname": "str",
+    "sha": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

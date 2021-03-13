@@ -26,6 +26,6 @@ setup(
         "httpx >= 0.15.0",
         "attrs >= 20.1.0",
         "python-dateutil >= 2.8.1",
-        "giturlparse >= 0.9.2"
+        "giturlparse >= 0.9.2",
     ],
 )

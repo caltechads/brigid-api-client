@@ -103,6 +103,10 @@ from .pipeline_step_invocations_retrieve_expand import (
 from .pipeline_steps_list_expand import PipelineStepsListExpand
 from .pipeline_steps_retrieve_expand import PipelineStepsRetrieveExpand
 from .release import Release
+from .release_import import ReleaseImport
+from .release_import_all import ReleaseImportAll
+from .release_import_all_response import ReleaseImportAllResponse
+from .release_import_all_response_errors import ReleaseImportAllResponseErrors
 from .releases_list_expand import ReleasesListExpand
 from .releases_retrieve_expand import ReleasesRetrieveExpand
 from .schema_retrieve_format import SchemaRetrieveFormat

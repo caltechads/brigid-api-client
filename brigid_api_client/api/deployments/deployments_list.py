@@ -7,6 +7,17 @@ from ...models.deployments_list_expand import DeploymentsListExpand
 from ...models.paginated_deployment_list import PaginatedDeploymentList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "environment_machine_name": "str",
+    "environment_name": "str",
+    "fullname": "str",
+    "sha": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

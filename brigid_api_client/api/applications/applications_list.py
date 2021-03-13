@@ -7,6 +7,17 @@ from ...models.applications_list_expand import ApplicationsListExpand
 from ...models.paginated_application_list import PaginatedApplicationList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "ecs_service_name": "str",
+    "ecs_task_family": "str",
+    "machine_name": "str",
+    "name": "str",
+    "owner_fullname": "str",
+    "owner_username": "str",
+    "team_abbr": "str",
+    "team_name": "str",
+}
+
 
 def _get_kwargs(
     *,

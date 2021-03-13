@@ -7,6 +7,8 @@ from ...models.docker_image_build import DockerImageBuild
 from ...models.patched_docker_image_build import PatchedDockerImageBuild
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.awsecs_service import AWSECSService
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

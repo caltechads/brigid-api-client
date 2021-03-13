@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.organization import Organization
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,

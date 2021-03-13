@@ -7,6 +7,18 @@ from ...models.ecs_service_deploys_list_expand import EcsServiceDeploysListExpan
 from ...models.paginated_ecs_service_deploy_list import PaginatedECSServiceDeployList
 from ...types import UNSET, Response, Unset
 
+LIST_FILTERS = {
+    "application_machine_name": "str",
+    "application_name": "str",
+    "ecs_service_name": "str",
+    "environment_machine_name": "str",
+    "environment_name": "str",
+    "fullname": "str",
+    "sha": "str",
+    "username": "str",
+    "version": "str",
+}
+
 
 def _get_kwargs(
     *,

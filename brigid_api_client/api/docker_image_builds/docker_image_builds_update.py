@@ -6,6 +6,8 @@ from ...client import AuthenticatedClient
 from ...models.docker_image_build import DockerImageBuild
 from ...types import Response
 
+LIST_FILTERS = {}
+
 
 def _get_kwargs(
     *,
